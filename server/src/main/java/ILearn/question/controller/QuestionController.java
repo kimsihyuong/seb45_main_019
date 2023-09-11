@@ -6,12 +6,15 @@ import ILearn.question.dto.QuestionGetDto;
 import ILearn.question.dto.QuestionTypeDto;
 import ILearn.question.entity.Question;
 import ILearn.question.service.QuestionService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Positive;
@@ -22,11 +25,14 @@ import java.util.List;
 @Slf4j
 @Validated
 @RequiredArgsConstructor
+@EnableSwagger2
+@Api(tags = "문제 컨트롤러", description = "문제 관련 작업")
 public class QuestionController {
     private final QuestionService questionService;
 
     // 문제 생성
     @PostMapping("/generate-questions")
+    @ApiOperation(value = "server용 질문 등록", notes = "server만 보는 API")
     public ResponseEntity<?> createQuestion(@Valid @RequestBody QuestionTypeDto questionTypeDto) {
         try {
             List<Question> questions = questionService.generateQuestionsByWordId(questionTypeDto);
@@ -42,6 +48,7 @@ public class QuestionController {
 
     // 질문 단일조회
     @GetMapping("/{questionId}")
+    @ApiOperation(value = "질문 등록", notes = "질문 단일 조회")
     public ResponseEntity<ApiResponse<?>> getMember(@PathVariable @Positive Long questionId) {
         try {
             QuestionGetDto question = questionService.getQuestion(questionId);
@@ -54,11 +61,4 @@ public class QuestionController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
         }
     }
-
-//    @GetMapping("/{questionId}")
-//    public ResponseEntity<List<Question>> getQuizQuestions(@PathVariable("questionId") Long questionId) {
-//        List<Question> question = questionService.generateQuestionsByWordId(questionId);
-//
-//        return ResponseEntity.ok(question);
-//    }
 }
