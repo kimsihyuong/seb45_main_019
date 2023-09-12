@@ -1,5 +1,6 @@
 package ILearn.word.dto;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -8,6 +9,7 @@ import java.util.List;
 
 @Getter
 @AllArgsConstructor
+@ApiModel(description = "단어 정보")
 public class WordGetDto {
     @ApiModelProperty(value = "단어 ID", example = "1")
     private Long wordId;

@@ -15,10 +15,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig implements WebMvcConfigurer {
-    private static final String API_NAME = "ILearn API";
-    private static final String API_VERSION = "0.0.1";
-    private static final String API_DESCRIPTION = "ILearn 명세서";
-
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("swagger-ui.html")

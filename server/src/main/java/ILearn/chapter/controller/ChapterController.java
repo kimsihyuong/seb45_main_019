@@ -33,6 +33,9 @@ public class ChapterController {
     }
 
     @GetMapping
+    @ApiOperation(value = "챕터 전체 조회", notes = "챕터와 챕터에 포함된 wordId 함께 조회")
+    @ApiResponses({
+            @io.swagger.annotations.ApiResponse(code = 200, message = "챕터 목록 조회 성공", response = ChapterInfo.class)})
     public ResponseEntity<ChapterResponse> getChapters() {
         ChapterResponse response = chapterService.getAllChaptersResponse();
         return new ResponseEntity<>(response, HttpStatus.OK);

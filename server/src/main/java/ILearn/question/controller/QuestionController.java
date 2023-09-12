@@ -8,6 +8,7 @@ import ILearn.question.entity.Question;
 import ILearn.question.service.QuestionService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponses;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -32,7 +33,7 @@ public class QuestionController {
 
     // 문제 생성
     @PostMapping("/generate-questions")
-    @ApiOperation(value = "server용 질문 등록", notes = "server만 보는 API")
+    @ApiOperation(value = "server용 질문 등록", notes = "server만 사용하는 API")
     public ResponseEntity<?> createQuestion(@Valid @RequestBody QuestionTypeDto questionTypeDto) {
         try {
             List<Question> questions = questionService.generateQuestionsByWordId(questionTypeDto);
@@ -49,6 +50,7 @@ public class QuestionController {
     // 질문 단일조회
     @GetMapping("/{questionId}")
     @ApiOperation(value = "질문 등록", notes = "질문 단일 조회")
+    @ApiResponses(@io.swagger.annotations.ApiResponse(code = 200, message = "문제 조회 성공", response = Question.class))
     public ResponseEntity<ApiResponse<?>> getMember(@PathVariable @Positive Long questionId) {
         try {
             QuestionGetDto question = questionService.getQuestion(questionId);

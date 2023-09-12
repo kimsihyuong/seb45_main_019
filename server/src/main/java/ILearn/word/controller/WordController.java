@@ -3,9 +3,11 @@ package ILearn.word.controller;
 import ILearn.global.response.ApiResponse;
 import ILearn.global.response.ApiResponseException;
 import ILearn.word.dto.WordGetDto;
+import ILearn.word.entity.Word;
 import ILearn.word.service.WordService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponses;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -31,6 +33,7 @@ public class WordController {
 
     @GetMapping("/{word_Id}")
     @ApiOperation(value = "단어 조회", notes = "단어 아이디로 단어를 조회")
+    @ApiResponses(@io.swagger.annotations.ApiResponse(code = 200, message = "단어 조회 성공", response = WordGetDto.class))
     public ResponseEntity<ApiResponse<?>> getWord(@PathVariable("word_Id") @Positive Long wordId) {
         try {
             WordGetDto word = wordService.getWords(wordId);
