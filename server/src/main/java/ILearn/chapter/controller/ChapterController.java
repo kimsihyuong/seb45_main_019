@@ -21,11 +21,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/learning")
-<<<<<<< HEAD
 @EnableSwagger2
 @Api(tags = "챕터 조회 컨트롤러", description = "챕터 관련 작업")
-=======
->>>>>>> acc27949d5b8e06b849965aae044131b09ac6375
 public class ChapterController {
 
     private final ChapterService chapterService;

@@ -26,11 +26,7 @@ import javax.validation.constraints.Positive;
 @RequestMapping("/members")
 @Slf4j
 @EnableSwagger2
-<<<<<<< HEAD
-@Api(tags = "멤버 컨트롤러", description = "멤버 관련 작업")
-=======
 @Api(tags = "Member Controller", description = "Member 관련 API")
->>>>>>> acc27949d5b8e06b849965aae044131b09ac6375
 public class MemberController {
     private final MemberMapper memberMapper;
     private final MemberService memberService;

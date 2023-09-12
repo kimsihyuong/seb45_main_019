@@ -54,6 +54,6 @@ public class Word {
     private Chapter chapter;
 
     @ManyToOne
-    @JoinColumn(name = "user_Id")
+    @JoinColumn(name = "user_id")
     private Member member;
 }

@@ -1,6 +1,5 @@
 package ILearn.member.entity;
 
-import ILearn.learning.entity.Learning;
 import ILearn.manage.entity.Manage;
 import ILearn.question.entity.Question;
 import ILearn.word.entity.Word;
@@ -68,10 +67,6 @@ public class Member {
     @OneToMany
     @JoinColumn(name = "member")
     private List<Word> words;
-
-    @OneToMany
-    @JoinColumn(name = "learning_Id")
-    private List<Learning> learnings;
 
     @OneToMany
     @JoinColumn(name = "question_Id")
