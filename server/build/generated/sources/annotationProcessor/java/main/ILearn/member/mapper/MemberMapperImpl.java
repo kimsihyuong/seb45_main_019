@@ -11,8 +11,13 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
+<<<<<<< HEAD
     date = "2023-09-12T10:53:07+0900",
     comments = "version: 1.5.2.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-8.2.1.jar, environment: Java 11.0.20 (Azul Systems, Inc.)"
+=======
+    date = "2023-09-12T14:56:43+0900",
+    comments = "version: 1.5.2.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-8.2.1.jar, environment: Java 11.0.19 (Azul Systems, Inc.)"
+>>>>>>> ab68dbe1d20e3e09fc567d9259a06f3ca80240f5
 )
 @Component
 public class MemberMapperImpl implements MemberMapper {
@@ -60,9 +65,7 @@ public class MemberMapperImpl implements MemberMapper {
         memberResponseDto.setEmail( member.getEmail() );
         memberResponseDto.setNickname( member.getNickname() );
         memberResponseDto.setPoint( member.getPoint() );
-        if ( member.getMemberStatus() != null ) {
-            memberResponseDto.setMemberStatus( member.getMemberStatus().name() );
-        }
+        memberResponseDto.setMemberStatus( member.isMemberStatus() );
         List<String> list = member.getRoles();
         if ( list != null ) {
             memberResponseDto.setRoles( new ArrayList<String>( list ) );
